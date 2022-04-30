@@ -43,12 +43,17 @@ function newAppointment(appointmentData) {
 
 function updateAppointmentStatus(id, status) {
   return new Promise(function (resolve, reject) {
-    Appointment.findByIdAndUpdate(id, { status }, function (error, data) {
-      if (error) {
-        return reject(error);
+    Appointment.findByIdAndUpdate(
+      id,
+      { status },
+      { new: true },
+      function (error, data) {
+        if (error) {
+          return reject(error);
+        }
+        return resolve(data);
       }
-      return resolve(data);
-    });
+    );
   });
 }
 

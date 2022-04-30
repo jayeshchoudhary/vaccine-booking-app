@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const HospitalSchema = new Schema({
   name: String,
   city: String,
-  available_vaccines: [String],
+  availableVaccines: [String],
 });
 
 const Hospital = mongoose.model("Hospital", HospitalSchema);

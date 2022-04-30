@@ -112,11 +112,20 @@ function editUser(id, userData) {
       { id },
       { ...userData },
       { new: true },
-      function (error, data) {
+      function (error, user) {
         if (error) {
           return reject(error);
+        } else if (userData?.password) {
+          user.setPassword(userData.password);
+          user.save(function (error1, user1) {
+            if (error1) {
+              return reject(error1);
+            }
+            return resolve(user1);
+          });
+        } else {
+          return resolve(user);
         }
-        return resolve(data);
       }
     );
   });
