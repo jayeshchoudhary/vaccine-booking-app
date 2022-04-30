@@ -91,6 +91,21 @@ function userSignUp(userData) {
   });
 }
 
+function validateLogin(userData) {
+  return new Promise(async function (resolve, reject) {
+    try {
+      const user = await UserSchema.methods.findByEmail(userData.email);
+      if (user?.validPassword(userData.password)) {
+        return resolve(user);
+      }
+      return reject(new Error("Invalid Credentials!!!"));
+    } catch (error) {
+      console.error(error);
+      return reject(error);
+    }
+  });
+}
+
 function editUser(id, userData) {
   return new Promise((resolve, reject) => {
     User.findOneAndUpdate(
@@ -121,4 +136,5 @@ module.exports = {
   userSignUp,
   editUser,
   getUserDetailsByEmail,
+  validateLogin,
 };
