@@ -1,8 +1,8 @@
-var express = require("express");
+const express = require("express");
 const { getAllAppointmentByUser } = require("../model/Appointment");
 const { userSignUp, validateLogin, editUser } = require("../model/User");
 const User = require("../model/User");
-var router = express.Router();
+const router = express.Router();
 
 router.post("/signup", async function (req, res) {
   try {

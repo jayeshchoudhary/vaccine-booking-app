@@ -18,6 +18,10 @@ const UserSchema = new Schema({
     type: String,
     enum: ["USER", "ADMIN"],
   },
+  age: {
+    type: Number,
+  },
+  username: String,
 });
 
 // method to set encrypted password in the DB

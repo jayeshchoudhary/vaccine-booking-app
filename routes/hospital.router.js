@@ -1,6 +1,6 @@
-var express = require("express");
+const express = require("express");
 const { getAllHospitals, addNewHospital } = require("../model/Hospital");
-var router = express.Router();
+const router = express.Router();
 
 router.get("/all-hospitals", async function (req, res, next) {
   try {

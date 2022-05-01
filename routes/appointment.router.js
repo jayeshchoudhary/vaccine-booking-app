@@ -1,11 +1,11 @@
-var express = require("express");
+const express = require("express");
 const {
   getAppointmentDetailsById,
   updateAppointmentStatus,
   newAppointment,
   getAllAppointments,
 } = require("../model/Appointment");
-var router = express.Router();
+const router = express.Router();
 
 router.post("/", async function (req, res) {
   try {
